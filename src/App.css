@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+html {
+  background-color: rgb(245, 245, 220);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* Header e search */
+.container-header{
+width: 100%;
+height: 60px;
+margin:  0 auto;
+display: flex;
+align-items: center;
+justify-content:space-evenly;
+background-color: rgb(14, 13, 13);
+font-family: Roboto, sans-serif;
+color: rgb(238, 236, 245);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.search {
+display: flex;
+align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.search-input {
+margin: 3px 3px;
+border-radius: 10px;
+height: 30px;
+border: 2px solid rgb(9, 9, 10); 
 }
 
-.App-link {
-  color: #61dafb;
+.search button {
+background-color: #f8f2f7;
+border-radius: 50%;
+cursor: pointer;
+border: 2px solid rgb(9, 9, 10);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-icono {
+width: 20px;
+height: 20px;
 }
+
+/* formulário */
+.container-form {
+display: flex;
+flex-direction: column;
+align-items:center;
+background-color: rgb(255, 226, 196);
+
+}
+
+.reg-form {
+display: flex;
+flex-wrap: wrap;
+align-items:flex-start;
+justify-content:center; 
+font-family: Roboto, sans-serif;
+font-weight: bold;
+color: #0c0c0c;
+margin-left: 100px;
+margin-right: 20px;
+}
+
+.form-input {
+width: 300px;
+font-size: 18px;
+/* background-color: white; */
+/* padding: 14px 32px 14px 16px; */
+margin: 10px 50px 5px 5px ;
+border-radius: 4px;
+border: 2px solid #0c0c0c;
+/* outline: none; */
+}
+
+.form-boton {
+min-width: 200px;
+padding: 10px;
+font-size: 18px;
+font-family: Roboto, sans-serif;
+font-weight: 50px;
+border: none;
+border-radius: 4px;
+margin: 10px 0px 10px 15px;
+cursor: pointer;
+outline: none;
+background: #093f1e;
+color: #dfe9e3;
+}
+
+.container-contactBody{
+background-color:rgb(245, 245, 220) ;
+display: flex;
+flex-wrap: wrap;
+justify-content:space-around;
+
+}
+

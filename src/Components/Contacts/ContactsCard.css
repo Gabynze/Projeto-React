@@ -1,0 +1,62 @@
+/* card contactos*/
+.card-contatos{
+    background-color: #93cea0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 160px;
+    min-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 1px #9e3c3c;
+    border-style: 1px solid;
+    overflow: hidden;
+    margin: 30px 10px 10px 10px;
+    font-size: 14px;
+   
+  }
+  
+  .card-icons {
+    height: 100px;
+    width: 90px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #faf285;
+    border: 1px solid  #fad585;
+    margin: 15px 0px 50px 20px;
+  }
+  
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    /* align-items:stretch; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+    
+  .icono{
+    height: 100px;
+    width: 90px;
+    overflow: hidden
+  }
+  
+  .card-list{
+    list-style: none;
+  }
+  
+  .card-list span{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .card-button {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom:  5px;
+  }
+    

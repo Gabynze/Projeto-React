@@ -16,6 +16,12 @@ function App() {
 
   // estados para deletar los contactos
   const [contactsDelete, setcontactsDelete] = useState ()
+
+  // estados para editar, para decir que estas haciendo una alteración, controlar esas alteraciones
+  const [isUpdate, setIsUpdate]= useState()
+
+  // estados para buscar 
+  const [search, setSearch] = useState('');
  
 // Função para adicionar Contato e ir costruindo a lista de contato
   const handleAdd = async (e) => {
@@ -83,6 +89,49 @@ function App() {
     setShowModal (false);
   }
   // //////////////////
+
+  // Funções para editar
+  // o botao onclick chama a função onUpdate com o id da receita, onupdate para os dados aparecer na tela para o usuario poder alterar. 
+  const onUpdate = (contatoId) => {
+    fetch(`http://localhost:4000/contact/${contatoId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log("retorno de alterar", data)
+        setIsUpdate(contatoId);
+        setNames(data.Nome);
+        setSobreNomes (data.Sobrenome);
+        setPhones(data.Telefone);
+        setEmails (data.Email);
+      });
+  }
+
+  const handleUpdate = async() => {
+    const data = {
+      'Nome': names,
+      'Sobrenome': sobreNomes,
+      'Telefone':phones,
+      'Email': emails
+    }
+    const response = await fetch('http://localhost:4000/contact/' + isUpdate, {
+      method: 'PATCH',
+      body:JSON.stringify(data),
+      headers: {'Content-type': 'application/json; charset=UTF-8' }
+    });
+    if (response.ok) {
+      console.log('OKS', response.ok);
+      setIsUpdate(undefined);
+      setNames ('');
+      setSobreNomes ('');
+      setPhones ('');
+      setEmails ('');
+      contacts ();
+    }
+  }
+  // /// 
+
+  // Filtrar para buscar
+  const results = !search ?listContacts : listContacts.filter((data) => data.Nome.toLowerCase().includes(search.toLocaleLowerCase()))
+  // //
   
   return (
     <>
@@ -97,6 +146,8 @@ function App() {
             className='search-input' 
             type='text'  
             placeholder='Nome do contato'
+            value={search}
+            onChange= {(e) =>setSearch(e.target.value)}
             />
           </div>
         </div>
@@ -145,8 +196,8 @@ function App() {
           <button 
           className='form-boton' 
           type="submit"
-          onClick={handleAdd}
-          >Adicionar Contato
+          onClick={ isUpdate ? handleUpdate : handleAdd}
+          > {isUpdate ? "Salvar Dados Alterados" : 'Adicionar Contato'}
           </button>
         </div>
       </div>
@@ -154,7 +205,7 @@ function App() {
       {/* para listar los contatos */}
       <div className="container-contactBody">
         {/* fazemos un map donde para cada receita ele vai mostrar lo que tenemos em retorno */}
-        {listContacts.map((contato) => { 
+        {results.map((contato) => { 
           return (
             <ContactsCard  
               key= {contato.id}
@@ -164,6 +215,7 @@ function App() {
               telefone= {contato.Telefone}
               email= {contato.Email}
               onDelete= {() => onDelete(contato.id)}
+              upDate= {() => onUpdate(contato.id)}
             /> 
           )  
         })}

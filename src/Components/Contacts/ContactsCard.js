@@ -2,7 +2,7 @@ import './ContactsCard.css'
 import { BsFillPersonFill } from "react-icons/bs"
 
 
-function ContactsCard ({ nome, sobrenome, telefone, email }) {
+function ContactsCard ({ nome, sobrenome, telefone, email, onDelete}) {
 
   return(
     <section className='card-contatos'>
@@ -21,6 +21,7 @@ function ContactsCard ({ nome, sobrenome, telefone, email }) {
         <div className='card-button'>
           <button 
             className='btn btn-danger'
+            onClick={onDelete} 
             >
             <i className='fa fa-trash'/>
           </button>

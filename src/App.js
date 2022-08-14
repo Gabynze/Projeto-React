@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdPersonSearch } from "react-icons/md";
 import ContactsCard from "./Components/Contacts/ContactsCard";
+import Modal from "./Components/Modal/Modal";
 import './App.css';
 
 function App() {
@@ -8,8 +9,13 @@ function App() {
   const [sobreNomes, setSobreNomes] = useState ('');
   const [phones, setPhones] = useState (''); 
   const [emails, setEmails] = useState ('');
-
   const [listContacts, setListContacts] = useState ([]);
+
+  // estados show modal para confirmar se quer deletar
+  const [showModal, setShowModal] = useState (false)
+
+  // estados para deletar los contactos
+  const [contactsDelete, setcontactsDelete] = useState ()
  
 // Função para adicionar Contato e ir costruindo a lista de contato
   const handleAdd = async (e) => {
@@ -53,6 +59,30 @@ function App() {
     contacts()
   },[]);
   // ////
+
+  // Função para excluir com id do contato e  chama o showmodal
+  const onDelete = (contatoId) => {
+    setcontactsDelete(contatoId);
+    setShowModal (true);
+  }
+  // Função para excluir os contatos que vai ser chamada por showmodal ao confirmar que quer excluir
+  const handleDelete = async () =>{
+    setShowModal(false);
+    const response = await fetch ('http://localhost:4000/contact/' + contactsDelete,{
+      method: 'DELETE',
+    })
+    if (response.ok) {
+      contacts();
+    }
+    alert ('Deletado com sucesso');
+  }
+
+  // Clico no cancelar colocamos de nuevo el estado de setcontactsDelete como vacio
+  const handleCancelar = () => {
+    setcontactsDelete ('');
+    setShowModal (false);
+  }
+  // //////////////////
   
   return (
     <>
@@ -133,10 +163,19 @@ function App() {
               sobrenome={contato.Sobrenome}
               telefone= {contato.Telefone}
               email= {contato.Email}
+              onDelete= {() => onDelete(contato.id)}
             /> 
           )  
         })}
       </div>
+
+      {
+        showModal &&
+        <Modal 
+        handleCancelar={handleCancelar}
+        handleDelete={handleDelete}
+        />
+      }
     </>
   );
 }

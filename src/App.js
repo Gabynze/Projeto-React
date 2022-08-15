@@ -4,26 +4,18 @@ import ContactsCard from "./Components/Contacts/ContactsCard";
 import Modal from "./Components/Modal/Modal";
 import './App.css';
 
+// Adicionar e mostrar
 function App() {
   const [names, setNames] = useState ('');
   const [sobreNomes, setSobreNomes] = useState ('');
   const [phones, setPhones] = useState (''); 
   const [emails, setEmails] = useState ('');
   const [listContacts, setListContacts] = useState ([]);
-
-  // estados show modal para confirmar se quer deletar
   const [showModal, setShowModal] = useState (false)
-
-  // estados para deletar los contactos
   const [contactsDelete, setcontactsDelete] = useState ()
-
-  // estados para editar, para decir que estas haciendo una alteración, controlar esas alteraciones
   const [isUpdate, setIsUpdate]= useState()
-
-  // estados para buscar 
   const [search, setSearch] = useState('');
  
-// Função para adicionar Contato e ir costruindo a lista de contato
   const handleAdd = async (e) => {
     e.preventDefault();
     const data = {
@@ -50,28 +42,24 @@ function App() {
       contacts();
     }
   }
-  // ///////
-
-  //Função para buscar todos os contatos e colocarlos dentro de um estado setListContacts
+  
   function contacts () {
     fetch('http://localhost:4000/contact/')
       .then((response) => response.json())
       .then(data => setListContacts(data));
   };
-  // ////////
-
-  //useEffect para mostrar por primeira vez os contatos que temos cadastrados na tela
+  
   useEffect(() => {
     contacts()
   },[]);
-  // ////
+// ///////
 
-  // Função para excluir com id do contato e  chama o showmodal
+// Deletar
   const onDelete = (contatoId) => {
     setcontactsDelete(contatoId);
     setShowModal (true);
   }
-  // Função para excluir os contatos que vai ser chamada por showmodal ao confirmar que quer excluir
+
   const handleDelete = async () =>{
     setShowModal(false);
     const response = await fetch ('http://localhost:4000/contact/' + contactsDelete,{
@@ -83,20 +71,17 @@ function App() {
     alert ('Deletado com sucesso');
   }
 
-  // Clico no cancelar colocamos de nuevo el estado de setcontactsDelete como vacio
   const handleCancelar = () => {
     setcontactsDelete ('');
     setShowModal (false);
   }
-  // //////////////////
-
-  // Funções para editar
-  // o botao onclick chama a função onUpdate com o id da receita, onupdate para os dados aparecer na tela para o usuario poder alterar. 
+  // ////////
+  
+  // Editar
   const onUpdate = (contatoId) => {
     fetch(`http://localhost:4000/contact/${contatoId}`)
       .then((response) => response.json())
       .then((data) => {
-        // console.log("retorno de alterar", data)
         setIsUpdate(contatoId);
         setNames(data.Nome);
         setSobreNomes (data.Sobrenome);
@@ -127,12 +112,12 @@ function App() {
       contacts ();
     }
   }
-  // /// 
+  // ////
 
-  // Filtrar para buscar
+  // Filtrar-buscar
   const results = !search ?listContacts : listContacts.filter((data) => data.Nome.toLowerCase().includes(search.toLocaleLowerCase()))
-  // //
-  
+  // ////
+ 
   return (
     <>
       <header>
@@ -202,9 +187,8 @@ function App() {
         </div>
       </div>
 
-      {/* para listar los contatos */}
+      {/* para listar os contatos */}
       <div className="container-contactBody">
-        {/* fazemos un map donde para cada receita ele vai mostrar lo que tenemos em retorno */}
         {results.map((contato) => { 
           return (
             <ContactsCard  

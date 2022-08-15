@@ -7,7 +7,7 @@ function Modal ({handleDelete, handleCancelar}) {
     <div className='confirm-modal'>
       <div className='modal-info'>
         <h3>Tem certeza que deseja excluir o contato selecionado?</h3>
-        <p>se eliminar não voltara a ver este registro</p>
+        <p>se eliminar não voltará a ver este registro</p>
       </div>
       <div className='modal-button'>
         <button className= 'button-confirmar' onClick={handleDelete}>Confirmar</button>

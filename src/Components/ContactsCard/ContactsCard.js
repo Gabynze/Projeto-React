@@ -2,7 +2,7 @@ import './ContactsCard.css'
 import { BsFillPersonFill } from "react-icons/bs"
 
 
-function ContactsCard ({ nome, sobrenome, telefone, email, onDelete, upDate }) {
+function ContactsCard ({ nome, sobrenome, telefone, email, onDelete, upDate  }) {
 
   return(
     <section className='card-contatos'>
@@ -10,7 +10,7 @@ function ContactsCard ({ nome, sobrenome, telefone, email, onDelete, upDate }) {
         <BsFillPersonFill className='icono'/>
       </div>
       <div className='card-info' >
-        <div>
+        <div className='containerCard-list'>
           <ul className='card-list'>
             <li><span>Nome:</span> {nome} </li>
             <li><span>Sobrenome:</span> {sobrenome} </li>
@@ -38,3 +38,6 @@ function ContactsCard ({ nome, sobrenome, telefone, email, onDelete, upDate }) {
 }
 
 export default ContactsCard;
+
+
+

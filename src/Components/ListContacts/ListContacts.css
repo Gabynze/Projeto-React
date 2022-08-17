@@ -1,0 +1,50 @@
+.container-inicio p{
+    font-size: 25px;
+    font-style: italic;
+    text-align: center;
+    padding-top: 10px;
+    color: rgb(238, 236, 245);
+  }
+  
+  .container-inicio{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-evenly;
+    background-color: #217D8A;
+    font-family: Roboto, sans-serif;
+    color: rgb(10, 10, 10);
+  }
+      
+  .search {
+    display: flex;
+    align-items: center;
+    color: #f9c3a2;
+    font-weight: bold;
+    font-size: 18px;
+  }
+      
+  .search-input {
+    margin: 3px 3px;
+    border-radius: 10px;
+    height: 30px;
+    border: 2px solid #E37222; 
+    text-align: center;
+  }
+      
+  .button-icono {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .container-contactBody{
+    background-color: #EEAA7B;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+  }
+  
+  
+  
+  

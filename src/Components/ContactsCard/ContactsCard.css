@@ -1,0 +1,59 @@
+.card-contatos{
+  background-color: #D9E4DE;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  align-items: center;
+  height: 160px;
+  min-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 1px #13464d;
+  border-style: 1px solid;
+  overflow: hidden;
+  margin: 30px 10px 10px 10px;
+  font-size: 14px;
+}
+
+.card-icons {
+  height: 100px;
+  width: 90px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #F1AA7E;
+  border: 1px solid  #13464d;
+  margin: 15px 0px 50px 20px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 20px 5px 0px;
+ 
+}
+  
+.icono{
+  height: 100px;
+  width: 90px;
+  overflow: hidden
+}
+
+.card-list{
+  list-style: none;
+  
+}
+
+.card-list span{
+  font-size: 15px;
+  font-weight: bold;
+  color: #02265e; 
+}
+
+.card-button {
+  width: 200px;
+  display: flex;
+  justify-content:space-evenly;
+  padding-bottom:  5px;
+}
